@@ -1,0 +1,20 @@
+name: My Linting Action
+
+on:
+  push
+
+jobs:
+  build:
+    name: Lint Code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Checkstyle
+        uses: github/super-linter@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          checkstyle_config: google
